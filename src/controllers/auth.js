@@ -113,6 +113,7 @@ class AuthCtrl {
 
       res.status(201).json({
         success: true,
+        message: "Logged in successful.",
         data: updatedData,
         accessToken: token,
         refreshToken: refreshToken,
