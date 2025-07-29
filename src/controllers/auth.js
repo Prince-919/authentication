@@ -75,7 +75,7 @@ class AuthCtrl {
         { otp: verificationOTP },
         savedData
       );
-      await res.status(201).json({
+      res.status(201).json({
         success: true,
         message: "User registered successful.",
         data: updatedData,
