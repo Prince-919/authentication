@@ -171,7 +171,7 @@ class AuthCtrl {
       const response = await createUserOrUpdate({ emailVerified: true }, user);
       res.status(200).json({
         message: "Email verified successfully.",
-        response,
+        data: response,
       });
     } catch (error) {
       next(error);
