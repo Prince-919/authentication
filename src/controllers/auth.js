@@ -292,7 +292,7 @@ class AuthCtrl {
   };
   static updateProfile = async (req, res, next) => {
     await isFieldErrorFree(req, res);
-    const { username, email, role, phone } = req.body;
+    const { username, email, phone } = req.body;
     try {
       const userExist = await findUser({ email, username });
       if (!userExist) {
@@ -304,8 +304,6 @@ class AuthCtrl {
       const savedData = await createUserOrUpdate(
         {
           username,
-          email,
-          role,
           phone,
         },
         userExist
