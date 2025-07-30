@@ -12,6 +12,7 @@ router.get(
   AuthCtrl.getAllUser
 );
 router.get("/user", authenticatedRoutes, AuthCtrl.getUserById);
+router.post("/update-profile", authenticatedRoutes, AuthCtrl.updateProfile);
 router.post("/register", validateRegistrationRules, AuthCtrl.register);
 router.post("/login", loginLimiter, AuthCtrl.login);
 router.post("/mail-verification", AuthCtrl.verifyMail);

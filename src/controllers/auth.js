@@ -290,5 +290,34 @@ class AuthCtrl {
       next(error);
     }
   };
+  static updateProfile = async (req, res, next) => {
+    await isFieldErrorFree(req, res);
+    const { username, email, role, phone } = req.body;
+    try {
+      const userExist = await findUser({ email, username, phone });
+      if (userExist) {
+        throw new ErrorHandler(
+          "User with email or username is already exist.",
+          401
+        );
+      }
+      const savedData = await createUserOrUpdate(
+        {
+          username,
+          email,
+          role,
+          phone,
+        },
+        userExist
+      );
+      res.status(201).json({
+        success: true,
+        message: "Update Profile successful.",
+        data: savedData,
+      });
+    } catch (error) {
+      next(error);
+    }
+  };
 }
 module.exports = AuthCtrl;

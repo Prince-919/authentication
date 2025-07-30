@@ -34,13 +34,13 @@ async function sendVerificationMail(user) {
         </a>
       </div>
       <p style="font-size: 14px; color: #666;">
-        This OTP is valid for <strong>10 minutes</strong>.<br />
+        This OTP is valid for <strong>60 minutes</strong>.<br />
         If you didn’t request this, you can safely ignore this email.
       </p>
       <hr style="border: none; border-top: 1px solid #ddd; margin: 30px 0;" />
       <p style="font-size: 12px; color: #999;">
-        Need help? Contact us at <a href="mailto:support@trueauth.com" style="color: #28a745;">support@authly.com</a><br />
-        &copy; ${new Date().getFullYear()} Authly. All rights reserved.
+        Need help? Contact us at <a href="mailto:support@trueauth.com" style="color: #28a745;">support@trueauth.com</a><br />
+        &copy; ${new Date().getFullYear()} TrueAuth. All rights reserved.
       </p>
     </div>
   </div>
