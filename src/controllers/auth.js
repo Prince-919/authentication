@@ -294,8 +294,8 @@ class AuthCtrl {
     await isFieldErrorFree(req, res);
     const { username, email, role, phone } = req.body;
     try {
-      const userExist = await findUser({ email, username, phone });
-      if (userExist) {
+      const userExist = await findUser({ email, username });
+      if (!userExist) {
         throw new ErrorHandler(
           "User with email or username is already exist.",
           401
