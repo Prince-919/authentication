@@ -4,7 +4,7 @@ const { generateOtp } = require("../utils/generateOtp");
 
 async function sendVerificationMail(user) {
   const verificationOTP = await generateOtp();
-  const verificationLink = `http://localhost:5173/verify-otp?userId=${user._id}`;
+  const verificationLink = `https://react-authentication-d5gk.onrender.com/verify-otp?userId=${user._id}`;
 
   const mailOptions = {
     from: config.get("userEmail"),
@@ -51,7 +51,7 @@ async function sendVerificationMail(user) {
 }
 async function sendForgetPasswordLink(user) {
   const { token } = await generateTokens(user);
-  const resetPasswordLink = `http://localhost:5173/reset-password?token=${token}`;
+  const resetPasswordLink = `https://react-authentication-d5gk.onrender.com/reset-password?token=${token}`;
 
   const mailOptions = {
     from: config.get("userEmail"),
