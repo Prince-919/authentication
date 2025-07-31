@@ -292,9 +292,37 @@ class AuthCtrl {
   };
   static updateProfile = async (req, res, next) => {
     await isFieldErrorFree(req, res);
-    const { username, email, phone } = req.body;
+    const { username, phone } = req.body;
+    const userId = req.user?.id;
     try {
-      const userExist = await findUser({ email, username });
+      const userExist = await findUser({ id: userId });
+      if (!userExist) {
+        throw new ErrorHandler(
+          "User with email or username is already exist.",
+          401
+        );
+      }
+      const savedData = await createUserOrUpdate(
+        {
+          username,
+          phone,
+        },
+        userExist
+      );
+      res.status(201).json({
+        success: true,
+        message: "Update Profile successful.",
+        data: savedData,
+      });
+    } catch (error) {
+      next(error);
+    }
+  };
+  static updateUserProfileById = async (req, res, next) => {
+    await isFieldErrorFree(req, res);
+    const { username, email, phone, _id } = req.body;
+    try {
+      const userExist = await findUser({ id: _id });
       if (!userExist) {
         throw new ErrorHandler(
           "User with email or username is already exist.",
